@@ -73,6 +73,7 @@ const styles = {
         color: 'red'
     }
 }
+
 const mapStateToProps = ({ auth }) => {
     const { email, password, error, loading } = auth;
    

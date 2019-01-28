@@ -6,6 +6,7 @@ import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import LoginForm from './componets/LoginForm';
 import { Header } from './componets/common';
+import Router from './Router';
 
 class App extends Component {
     componentWillMount() {
@@ -24,8 +25,7 @@ class App extends Component {
         const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
         return (
              <Provider store={store}>
-             <Header headerText={'Navigation'} /> 
-                <LoginForm />
+              <Router />
              </Provider>
 
         );
