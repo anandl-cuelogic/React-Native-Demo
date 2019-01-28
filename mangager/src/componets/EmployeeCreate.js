@@ -16,7 +16,7 @@ class Employee extends Component {
                <CardSection>
                    <Input 
                       label="Phone Number"
-                      placeholder="555-555-555"
+                      placeholder="555-555"
                    />  
                </CardSection>
 
