@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Picker, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { employeeUpdate } from '../action';
+import { employeeUpdate, employeeCreate } from '../action';
 import { Card, CardSection, Input, Button } from './common';
 
 class Employee extends Component {
-
+     onButtonPress() {
+        const { name, phone, shift } = this.props;
+        this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+     }
     render() {
         return (
            <Card>
@@ -27,7 +30,7 @@ class Employee extends Component {
                    />  
                </CardSection>
 
-               <CardSection style={{ flexDirection: 'column' }}>
+               <CardSection >
                    <Text style={styles.pickerTextStyle}>Shift</Text>
                  <Picker 
                    style={{ flex: 1 }}
@@ -45,7 +48,7 @@ class Employee extends Component {
                </CardSection>
 
                <CardSection>
-                   <Button>
+                   <Button onPress={this.onButtonPress.bind(this)}>
                     Create   
                    </Button>
                </CardSection>
@@ -65,4 +68,4 @@ const styles = {
         paddingLeft: 20
     }
 };
-export default connect(mapStateToProps, { employeeUpdate })(Employee);
+export default connect(mapStateToProps, { employeeUpdate, employeeCreate })(Employee);
