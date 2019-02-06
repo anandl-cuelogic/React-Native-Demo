@@ -3,11 +3,12 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './componets/LoginForm';
 import EmployeeList from './componets/EmplyoeeList';
 import EmployeeCreate from './componets/EmployeeCreate';
+import EmployeeEdit from './componets/EmployeeEdit';
 
 
 const RounterComponent = () => {
    return (
-        <Router>
+        <Router Sce={{ paddingTop: 65 }}>
             <Scene key="root" hideNavBar>
                 <Scene key="auth">
                   <Scene key="login" component={LoginForm} title="Please Login" initial />
@@ -22,8 +23,9 @@ const RounterComponent = () => {
                     initial
                     />
                     <Scene key="employeeCreate" component={EmployeeCreate} title="Empolyee Create" />
+                    <Scene key="employeeEdite" component={EmployeeEdit} title="Edite Employee" />
                   </Scene> 
-                  </Scene>
+                 </Scene>
         </Router>
 
    );
