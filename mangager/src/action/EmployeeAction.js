@@ -34,3 +34,14 @@ export const employeeFetch = () => {
     });
 };
 };
+export const employeeSave = ({ name, phone, shift, uid }) => {
+   const { currentUser } = firebase.auth();
+    
+   return () => {
+     firebase.database.ref(`/users/${currentUser.uid}/employyes/${uid}`)
+     .set({ name, phone, shift })
+     .then(() => {
+      Actions.employeeList({ type: 'reset' });
+     });
+   };
+};
