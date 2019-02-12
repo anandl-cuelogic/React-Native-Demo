@@ -36,12 +36,12 @@ export const employeeFetch = () => {
 };
 export const employeeSave = ({ name, phone, shift, uid }) => {
    const { currentUser } = firebase.auth();
-    
-   return () => {
-     firebase.database.ref(`/users/${currentUser.uid}/employyes/${uid}`)
+   console.log(uid);
+    return () => {
+     firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
      .set({ name, phone, shift })
      .then(() => {
-      Actions.employeeList({ type: 'reset' });
+      Actions.EmployeeList({ type: 'reset' });
      });
    };
 };
