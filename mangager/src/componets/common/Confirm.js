@@ -3,21 +3,44 @@ import { Text, View, Modal } from 'react-native';
 import { CardSection } from './CardSection';
 import { Button } from './Button';
 
-const Confirm = ({ children }) => {
+const Confirm = ({ children, visible, onAccept, onDecline }) => {
+  const { containerStyle, textStyle, cardSetectionStyle } = styles;
 return (
-    <Modal>
-      <View>
-       <CardSection>
-        <Text>{ children }</Text>
+    <Modal
+     visible={visible}
+     transparent
+     animationType="slide"
+     onRequestClose={() => {}}
+    >
+      <View style={containerStyle}>
+       <CardSection style={cardSetectionStyle}>
+        <Text style={textStyle}>{ children }</Text>
        </CardSection>
-
        <CardSection>
-         <Button>Yes</Button>
-         <Button>No</Button>
+         <Button onPress={onAccept}>Yes</Button>
+         <Button onPress={onDecline}>No</Button>
        </CardSection>
       </View>
     </Modal>
 );
 };
 
+const styles = {
+    cardSetectionStyle: {
+     justifyContent: 'center'
+    },
+    textStyle: {
+       flex: 1,
+       fontsize: 18,
+       textAlign: 'center',
+       lineHeight: 40
+    },
+    containerStyle: {
+     backgroundColor: 'rgba(0,0,0,0.75)',
+     position: 'relative',
+     flex: 1,
+     justifyContent: 'center'
+
+    }
+};
 export { Confirm };
